@@ -1,0 +1,42 @@
+{
+  "name": "fc-shining-stars",
+  "version": "1.0.0",
+  "description": "FC Shining Stars Football Club Website with AI-assisted development",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx serve .",
+    "generate-component": "node automation/ai-coding-assistant.js generate-component",
+    "generate-football-component": "node automation/website-component-generator.js generate",
+    "generate-common-components": "node automation/website-component-generator.js generate-common",
+    "refactor-code": "node automation/ai-coding-assistant.js refactor",
+    "generate-docs": "node automation/ai-coding-assistant.js document",
+    "create-project": "node automation/ai-coding-assistant.js create-project",
+    "ai-execute": "node automation/ai-agent-orchestrator.js execute",
+    "report-server": "node server/save-report.js",
+    "auto-fix-contrast": "node automation/auto-contrast-fixer.js"
+  },
+  "dependencies": {
+    "@sentry/browser": "^7.64.0",
+    "@sentry/node": "^7.120.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1",
+    "puppeteer": "^21.11.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fc-shining-stars/fc-shining-stars.git"
+  },
+  "keywords": [
+    "football-club",
+    "style-guide",
+    "three.js",
+    "web"
+  ],
+  "author": "",
+  "license": "MIT"
+}

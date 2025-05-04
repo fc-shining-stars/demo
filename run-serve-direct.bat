@@ -1,0 +1,3 @@
+@echo off
+echo Starting web server...
+"C:\Program Files\nodejs\node.exe" -e "require('./node_modules/serve/build/main.js')('.')"

@@ -1,0 +1,3 @@
+@echo off
+echo Starting FC Shining Stars Football Club Website...
+"C:\Program Files\nodejs\node.exe" node_modules\serve\build\main.js .

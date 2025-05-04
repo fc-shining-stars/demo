@@ -1,0 +1,3 @@
+@echo off
+echo Opening FC Shining Stars website in your default browser...
+start "" "index.html"

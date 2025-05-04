@@ -1,0 +1,3 @@
+@echo off
+echo Starting FC Shining Stars web server...
+"C:\Program Files\nodejs\node.exe" start-server.js

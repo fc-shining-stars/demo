@@ -1,0 +1,3 @@
+@echo off
+echo Generating common football club components...
+"C:\Program Files\nodejs\node.exe" automation/website-component-generator.js generate-common ./components

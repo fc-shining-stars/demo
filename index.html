@@ -1,0 +1,2180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FC Shining Stars - Style Guide</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/football-theme.css">
+        <link rel="stylesheet" href="css/component-demo.css">
+        <link rel="stylesheet" href="css/contrast-fixes.css">
+        <link rel="stylesheet" href="css/component-contrast-fixes.css">
+        <link rel="stylesheet" href="css/contrast-fixes-update.css">
+        <link rel="stylesheet" href="css/auto-contrast-fixes.css">
+        <link rel="stylesheet" href="css/manual-contrast-fixes.css">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- Three.js Core - Using unpkg instead of cdnjs -->
+        <script src="https://unpkg.com/three@0.149.0/build/three.min.js"></script>
+
+        <!-- Spline Loader (Standalone) -->
+        <script src="https://unpkg.com/@splinetool/runtime@0.9.493/build/spline-runtime.min.js"></script>
+
+        <!-- Orbit Controls - Using unpkg instead of cdnjs -->
+        <script>
+            // Fallback if OrbitControls fails to load
+            window.addEventListener('DOMContentLoaded', function() {
+                if (typeof THREE !== 'undefined' && typeof THREE.OrbitControls === 'undefined') {
+                    console.log('Creating fallback OrbitControls');
+                    THREE.OrbitControls = function(camera, domElement) {
+                        this.update = function() {};
+                        this.enableZoom = false;
+                        this.enablePan = false;
+                        this.autoRotate = true;
+                        this.autoRotateSpeed = 1.5;
+                    };
+                }
+            });
+        </script>
+        <script src="https://unpkg.com/three@0.149.0/examples/js/controls/OrbitControls.js"></script>
+
+        <!-- Contrast Detector Script -->
+        <script src="js/contrast-detector.js" defer></script>
+
+        <!-- Enhanced Contrast Detector Script -->
+        <script src="js/enhanced-contrast-detector.js" defer></script>
+
+        <!-- Color Preview Enhancer Script -->
+        <script src="js/color-preview-enhancer.js" defer></script>
+
+        <!-- Contrast Enhancer Script -->
+        <script src="js/contrast-enhancer.js" defer></script>
+    </head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="#" class="sidebar-brand">
+                <div id="spline-logo"></div>
+                <span>FC Shining Stars</span>
+            </a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="sun"><i class="fas fa-sun"></i></span>
+                <span class="moon"><i class="fas fa-moon"></i></span>
+            </button>
+        </div>
+
+        <div class="sidebar-toggle-group">
+            <button id="color-guide-btn" class="sidebar-toggle-btn active">Color Styleguide</button>
+            <button id="component-demo-btn" class="sidebar-toggle-btn">Component Demo</button>
+        </div>
+
+        <!-- Color Styleguide Navigation -->
+        <nav class="sidebar-nav">
+            <div id="color-styleguide-nav" class="sidebar-nav-group active">
+                <div class="sidebar-nav-item">
+                    <a href="#brand-colors" class="sidebar-nav-link">Brand Colors</a>
+                    <div class="sidebar-preview" id="brand-colors-preview">
+                        <div class="color-section">
+                            <h3 class="color-category-title">🎨 Brand Colors</h3>
+                            <div class="color-grid">
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-brand-primary);">Primary</div>
+                                </div>
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-brand-tertiary); color: white;">Tertiary</div>
+                                </div>
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-brand-secondary); color: #002147;">Secondary</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-item">
+                    <a href="#neutral-colors" class="sidebar-nav-link">Neutral Colors</a>
+                    <div class="sidebar-preview" id="neutral-colors-preview">
+                        <div class="color-section">
+                            <h3 class="color-category-title">⚖️ Neutral Colors</h3>
+                            <div class="color-grid">
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-neutral-900); color: white;">900</div>
+                                </div>
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-neutral-500); color: white;">500</div>
+                                </div>
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-neutral-100); color: #1f2428;">100</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-item">
+                    <a href="#system-colors" class="sidebar-nav-link">System Colors</a>
+                    <div class="sidebar-preview" id="system-colors-preview">
+                        <div class="color-section">
+                            <h3 class="color-category-title">⚙️ System Colors</h3>
+                            <div class="color-grid">
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-system-success); color: white;">Success</div>
+                                </div>
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-system-info); color: #1f2428;">Info</div>
+                                </div>
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-system-error); color: white;">Error</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-item">
+                    <a href="#background-colors" class="sidebar-nav-link">Background Colors</a>
+                    <div class="sidebar-preview" id="background-colors-preview">
+                        <div class="color-section">
+                            <h3 class="color-category-title">🏞 Background Colors</h3>
+                            <div class="color-grid">
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-bg-page); color: #1f2428; border: 1px solid #e6e6e6;">Page</div>
+                                </div>
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-bg-section); color: #1f2428;">Section</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-item">
+                    <a href="#border-colors" class="sidebar-nav-link">Border Colors</a>
+                    <div class="sidebar-preview" id="border-colors-preview">
+                        <div class="color-section">
+                            <h3 class="color-category-title">🔲 Border Colors</h3>
+                            <div class="color-grid">
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-border-default); color: #1f2428;">Default</div>
+                                </div>
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-border-focus); color: white;">Focus</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-item">
+                    <a href="#link-colors" class="sidebar-nav-link">Link Colors</a>
+                    <div class="sidebar-preview" id="link-colors-preview">
+                        <div class="color-section">
+                            <h3 class="color-category-title">🔗 Link Colors</h3>
+                            <div class="color-grid">
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-link-default); color: white;">Default</div>
+                                </div>
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-link-hover); color: white;">Hover</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-item">
+                    <a href="#text-colors" class="sidebar-nav-link">Text Colors</a>
+                    <div class="sidebar-preview" id="text-colors-preview">
+                        <div class="color-section">
+                            <h3 class="color-category-title">📝 Text Colors</h3>
+                            <div class="color-grid">
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-text-primary); color: white;">Primary</div>
+                                </div>
+                                <div class="color-card">
+                                    <div class="color-preview" style="background-color: var(--color-text-secondary); color: white;">Secondary</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-item">
+                    <a href="#typography" class="sidebar-nav-link">Typography</a>
+                    <div class="sidebar-preview" id="typography-preview">
+                        <div class="section-container">
+                            <div class="section-header">
+                                <h2>Typography</h2>
+                            </div>
+                            <div class="typography-showcase">
+                                <div class="font-family-showcase">
+                                    <div class="font-family-title">Primary Font: Bebas Neue Pro</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Component Demo Navigation -->
+            <div id="component-demo-nav" class="sidebar-nav-group">
+                <div class="sidebar-nav-item">
+                    <a href="#buttons" class="sidebar-nav-link">Buttons</a>
+                    <div class="sidebar-preview" id="buttons-preview">
+                        <div class="component-category">
+                            <div class="component-category-header">
+                                <h3 class="component-category-title">Buttons</h3>
+                            </div>
+                            <div class="component-demo">
+                                <div class="component-item">
+                                    <div class="component-preview">
+                                        <button class="btn btn-primary">Primary Button</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-item">
+                    <a href="#tables-lists" class="sidebar-nav-link">Tables & Lists</a>
+                    <div class="sidebar-preview" id="tables-lists-preview">
+                        <div class="component-category">
+                            <div class="component-category-header">
+                                <h3 class="component-category-title">Tables & Lists</h3>
+                            </div>
+                            <div class="component-demo">
+                                <div class="component-item">
+                                    <div class="component-preview">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Player</th>
+                                                    <th>Position</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>John Smith</td>
+                                                    <td>Forward</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-item">
+                    <a href="#badges-avatars" class="sidebar-nav-link">Badges & Avatars</a>
+                    <div class="sidebar-preview" id="badges-avatars-preview">
+                        <div class="component-category">
+                            <div class="component-category-header">
+                                <h3 class="component-category-title">Badges & Avatars</h3>
+                            </div>
+                            <div class="component-demo">
+                                <div class="component-item">
+                                    <div class="component-preview">
+                                        <div class="badge-group">
+                                            <span class="badge">Default</span>
+                                            <span class="badge badge-new">New</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-item">
+                    <a href="#progress-bars" class="sidebar-nav-link">Progress Bars</a>
+                    <div class="sidebar-preview" id="progress-bars-preview">
+                        <div class="component-category">
+                            <div class="component-category-header">
+                                <h3 class="component-category-title">Progress Bars</h3>
+                            </div>
+                            <div class="component-demo">
+                                <div class="component-item">
+                                    <div class="component-preview">
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 75%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-item">
+                    <a href="#tooltips" class="sidebar-nav-link">Tooltips</a>
+                    <div class="sidebar-preview" id="tooltips-preview">
+                        <div class="component-category">
+                            <div class="component-category-header">
+                                <h3 class="component-category-title">Tooltips</h3>
+                            </div>
+                            <div class="component-demo">
+                                <div class="component-item">
+                                    <div class="component-preview">
+                                        <div class="tooltip-container tooltip-top">
+                                            <button class="btn btn-secondary">Top Tooltip</button>
+                                            <div class="tooltip-content">This is a top tooltip</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-item">
+                    <a href="#modals" class="sidebar-nav-link">Modals</a>
+                    <div class="sidebar-preview" id="modals-preview">
+                        <div class="component-category">
+                            <div class="component-category-header">
+                                <h3 class="component-category-title">Modals</h3>
+                            </div>
+                            <div class="component-demo">
+                                <div class="component-item">
+                                    <div class="component-preview">
+                                        <button id="open-modal" class="btn btn-primary">Open Modal</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-item">
+                    <a href="#accordion" class="sidebar-nav-link">Accordion</a>
+                    <div class="sidebar-preview" id="accordion-preview">
+                        <div class="component-category">
+                            <div class="component-category-header">
+                                <h3 class="component-category-title">Accordion</h3>
+                            </div>
+                            <div class="component-demo">
+                                <div class="component-item">
+                                    <div class="component-preview">
+                                        <div class="accordion-container">
+                                            <div class="accordion-item">
+                                                <button class="accordion-header">
+                                                    <span>How can I buy match tickets?</span>
+                                                    <span class="accordion-icon">+</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Color Styleguide Section -->
+        <section id="color-styleguide" class="active-section styleguide-container">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>FC Shining Stars - Style Guide</h2>
+                </div>
+                <p class="section-description">
+                    Welcome to the FC Shining Stars Style Guide. This comprehensive guide showcases our brand colors, typography, and UI components to ensure consistency across all our digital platforms.
+                </p>
+
+                <!-- Color Palette -->
+                <!-- Brand Colors -->
+                <div class="color-section">
+                    <h3 class="color-category-title">🎨 Brand Colors</h3>
+                    <p class="component-category-description">
+                        Our primary brand colors represent the club's identity and should be used consistently across all materials.
+                    </p>
+                    <div class="color-grid">
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-brand-primary);">
+                                Primary
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Brand Primary</div>
+                                <div class="color-value">#002147</div>
+                                <div class="color-usage">Used for primary elements, headers, and main navigation.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-brand-tertiary); color: white;">
+                                Tertiary
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Brand Tertiary</div>
+                                <div class="color-value">#0033a0</div>
+                                <div class="color-usage">Used for secondary elements, buttons, and links.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-brand-secondary); color: #002147;">
+                                Secondary
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Brand Secondary</div>
+                                <div class="color-value">#ffd800</div>
+                                <div class="color-usage">Used for highlights, call-to-actions, and important elements.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Neutral Colors -->
+                <div class="color-section">
+                    <h3 class="color-category-title">⚖️ Neutral Colors</h3>
+                    <p class="component-category-description">
+                        Our neutral palette provides balance and helps create hierarchy in our designs.
+                    </p>
+                    <div class="color-grid">
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-neutral-900); color: white;">
+                                900
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Neutral 900</div>
+                                <div class="color-value">#1f2428</div>
+                                <div class="color-usage">Used for text, icons, and dark backgrounds.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-neutral-700); color: white;">
+                                700
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Neutral 700</div>
+                                <div class="color-value">#2f4f4f</div>
+                                <div class="color-usage">Used for secondary text and dark accents.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-neutral-500); color: white;">
+                                500
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Neutral 500</div>
+                                <div class="color-value">#696969</div>
+                                <div class="color-usage">Used for tertiary text and disabled states.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-neutral-300); color: white;">
+                                300
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Neutral 300</div>
+                                <div class="color-value">#a9a9a9</div>
+                                <div class="color-usage">Used for borders and subtle separators.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-neutral-100); color: #1f2428;">
+                                100
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Neutral 100</div>
+                                <div class="color-value">#e6e6e6</div>
+                                <div class="color-usage">Used for backgrounds and hover states.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-neutral-050); color: #1f2428;">
+                                050
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Neutral 050</div>
+                                <div class="color-value">#f5f5dc</div>
+                                <div class="color-usage">Used for card backgrounds and light containers.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-neutral-020); color: #1f2428;">
+                                020
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Neutral 020</div>
+                                <div class="color-value">#b0c4de</div>
+                                <div class="color-usage">Used for subtle accents and backgrounds.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Colors -->
+                <div class="color-section">
+                    <h3 class="color-category-title">⚙️ System Colors</h3>
+                    <p class="component-category-description">
+                        These colors convey specific meanings and are used for feedback and status indicators.
+                    </p>
+                    <div class="color-grid">
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-system-success); color: white;">
+                                Success
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">System Success</div>
+                                <div class="color-value">#027a48</div>
+                                <div class="color-usage">Used for success messages, confirmations, and positive actions.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-system-info); color: #1f2428;">
+                                Info
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">System Info</div>
+                                <div class="color-value">#87ceeb</div>
+                                <div class="color-usage">Used for informational messages and neutral notifications.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-system-error); color: white;">
+                                Error
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">System Error</div>
+                                <div class="color-value">#b42318</div>
+                                <div class="color-usage">Used for error messages, warnings, and critical alerts.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-system-disabled); color: #1f2428;">
+                                Disabled
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">System Disabled</div>
+                                <div class="color-value">#ecfdf3</div>
+                                <div class="color-usage">Used for disabled elements and inactive states.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Background Colors -->
+                <div class="color-section">
+                    <h3 class="color-category-title">🏞 Background Colors</h3>
+                    <p class="component-category-description">
+                        These colors are used for various background elements throughout the interface.
+                    </p>
+                    <div class="color-grid">
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-bg-page); color: #1f2428; border: 1px solid #e6e6e6;">
+                                Page
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Background Page</div>
+                                <div class="color-value">#ffffff</div>
+                                <div class="color-usage">Used for the main page background.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-bg-section); color: #1f2428;">
+                                Section
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Background Section</div>
+                                <div class="color-value">#e6e6e6</div>
+                                <div class="color-usage">Used for section backgrounds.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-bg-card); color: #1f2428;">
+                                Card
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Background Card</div>
+                                <div class="color-value">#f5f5dc</div>
+                                <div class="color-usage">Used for card backgrounds.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-bg-dark-section); color: white;">
+                                Dark Section
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Background Dark Section</div>
+                                <div class="color-value">#1f2428</div>
+                                <div class="color-usage">Used for dark section backgrounds.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-bg-brand-accent); color: #1f2428;">
+                                Brand Accent
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Background Brand Accent</div>
+                                <div class="color-value">#ffd800</div>
+                                <div class="color-usage">Used for accent backgrounds.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-bg-muted); color: #1f2428;">
+                                Muted
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Background Muted</div>
+                                <div class="color-value">#b0c4de</div>
+                                <div class="color-usage">Used for muted backgrounds.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Border Colors -->
+                <div class="color-section">
+                    <h3 class="color-category-title">🔲 Border Colors</h3>
+                    <p class="component-category-description">
+                        These colors are used for borders and dividers throughout the interface.
+                    </p>
+                    <div class="color-grid">
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-border-default); color: #1f2428;">
+                                Default
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Border Default</div>
+                                <div class="color-value">#dee0e3</div>
+                                <div class="color-usage">Used for standard borders.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-border-muted); color: white;">
+                                Muted
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Border Muted</div>
+                                <div class="color-value">#a9a9a9</div>
+                                <div class="color-usage">Used for subtle borders.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-border-focus); color: white;">
+                                Focus
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Border Focus</div>
+                                <div class="color-value">#0033a0</div>
+                                <div class="color-usage">Used for focus states.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Link Colors -->
+                <div class="color-section">
+                    <h3 class="color-category-title">🔗 Link Colors</h3>
+                    <p class="component-category-description">
+                        These colors are used for links in different states.
+                    </p>
+                    <div class="color-grid">
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-link-default); color: white;">
+                                Default
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Link Default</div>
+                                <div class="color-value">#0033a0</div>
+                                <div class="color-usage">Used for default link state.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-link-hover); color: white;">
+                                Hover
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Link Hover</div>
+                                <div class="color-value">#002147</div>
+                                <div class="color-usage">Used for hover link state.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-link-visited); color: white;">
+                                Visited
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Link Visited</div>
+                                <div class="color-value">#027a48</div>
+                                <div class="color-usage">Used for visited link state.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Colors -->
+                <div class="color-section">
+                    <h3 class="color-category-title">📝 Text Colors</h3>
+                    <p class="component-category-description">
+                        These colors are used for text throughout the interface.
+                    </p>
+                    <div class="color-grid">
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-text-primary); color: white;">
+                                Primary
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Text Primary</div>
+                                <div class="color-value">#1f2428</div>
+                                <div class="color-usage">Used for primary text.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-text-secondary); color: white;">
+                                Secondary
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Text Secondary</div>
+                                <div class="color-value">#2f4f4f</div>
+                                <div class="color-usage">Used for secondary text.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-text-tertiary); color: white;">
+                                Tertiary
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Text Tertiary</div>
+                                <div class="color-value">#696969</div>
+                                <div class="color-usage">Used for tertiary text.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-text-accent); color: #1f2428;">
+                                Accent
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Text Accent</div>
+                                <div class="color-value">#ffd800</div>
+                                <div class="color-usage">Used for accent text.</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-preview" style="background-color: var(--color-text-inverse); color: #1f2428; border: 1px solid #e6e6e6;">
+                                Inverse
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Text Inverse</div>
+                                <div class="color-value">#ffffff</div>
+                                <div class="color-usage">Used for text on dark backgrounds.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typography -->
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Typography</h2>
+                </div>
+                <p class="section-description">
+                    Our typography system uses Bebas Neue Pro for headings and Bebas Neue for secondary text, creating a bold, distinctive, and professional look.
+                </p>
+
+                <div class="typography-showcase">
+                    <div class="font-family-showcase">
+                        <div class="font-family-title">Primary Font: Bebas Neue Pro</div>
+                        <div class="font-example" style="font-family: 'Bebas Neue Pro', 'Bebas Neue', sans-serif;">
+                            <div class="font-name">Bebas Neue Pro</div>
+                            <div class="font-sample">THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.</div>
+                            <div class="font-weights">
+                                <div class="font-weight-example">
+                                    <div class="weight-name">Regular (400)</div>
+                                    <div style="font-weight: 400;">ABCDEFGHIJKLM</div>
+                                </div>
+                                <div class="font-weight-example">
+                                    <div class="weight-name">Medium (500)</div>
+                                    <div style="font-weight: 500;">ABCDEFGHIJKLM</div>
+                                </div>
+                                <div class="font-weight-example">
+                                    <div class="weight-name">Bold (700)</div>
+                                    <div style="font-weight: 700;">ABCDEFGHIJKLM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="font-family-showcase">
+                        <div class="font-family-title">Secondary Font: Bebas Neue</div>
+                        <div class="font-example" style="font-family: 'Bebas Neue', sans-serif;">
+                            <div class="font-name">Bebas Neue</div>
+                            <div class="font-sample">THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.</div>
+                            <div class="font-weights">
+                                <div class="font-weight-example">
+                                    <div class="weight-name">Regular (400)</div>
+                                    <div style="font-weight: 400;">ABCDEFGHIJKLM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-category">
+                        <h3 class="component-category-title">Heading Styles</h3>
+                        <div class="typography-examples">
+                            <h1>Heading 1 - Main Page Titles</h1>
+                            <h2>Heading 2 - Section Titles</h2>
+                            <h3>Heading 3 - Subsection Titles</h3>
+                            <h4>Heading 4 - Card Titles</h4>
+                            <h5>Heading 5 - Small Section Titles</h5>
+                            <h6>Heading 6 - Minor Titles</h6>
+                        </div>
+                    </div>
+
+                    <div class="component-category">
+                        <h3 class="component-category-title">Text Styles</h3>
+                        <div class="typography-examples">
+                            <p>This is a regular paragraph. FC Shining Stars is a premier football club with a rich history and passionate fan base. Our club was founded with the mission to develop talent and create a community around the beautiful game.</p>
+                            <p class="lead">This is a lead paragraph. Our team has won multiple championships and continues to strive for excellence both on and off the pitch.</p>
+                            <blockquote>
+                                "Football is not just a game, it's a way of life. At FC Shining Stars, we shine together."
+                                <cite>- Club Motto</cite>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Component Demo Section -->
+        <section id="component-demo" class="styleguide-container">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>UI Components</h2>
+                </div>
+                <p class="section-description">
+                    Our component library provides consistent, reusable UI elements for building FC Shining Stars digital experiences.
+                </p>
+
+                <!-- Buttons -->
+                <div class="component-category">
+                    <div class="component-category-header">
+                        <h3 class="component-category-title">Buttons</h3>
+                    </div>
+                    <p class="component-category-description">
+                        Buttons allow users to take actions and make choices with a single tap. Different styles communicate different types of actions.
+                    </p>
+
+                    <div class="component-demo">
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <button class="btn btn-primary">Primary Button</button>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Primary Button</div>
+                                <div class="component-description">Used for primary actions and main calls-to-action.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <button class="btn btn-secondary">Secondary Button</button>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Secondary Button</div>
+                                <div class="component-description">Used for secondary actions that complement the primary action.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <button class="btn btn-outline">Outline Button</button>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Outline Button</div>
+                                <div class="component-description">Used for less prominent actions that still require emphasis.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <button class="btn btn-text">Text Button</button>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Text Button</div>
+                                <div class="component-description">Used for the least prominent actions, often in cards or dialogs.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <button class="btn btn-disabled" disabled>Disabled Button</button>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Disabled Button</div>
+                                <div class="component-description">Indicates that a button action is unavailable.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Button Code Example</h4>
+                        <button class="copy-button">Copy Code</button>
+                        <pre><code class="language-html">&lt;button class="btn btn-primary"&gt;Primary Button&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Secondary Button&lt;/button&gt;
+&lt;button class="btn btn-outline"&gt;Outline Button&lt;/button&gt;
+&lt;button class="btn btn-text"&gt;Text Button&lt;/button&gt;
+&lt;button class="btn btn-disabled" disabled&gt;Disabled Button&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Forms -->
+                <div class="component-category">
+                    <div class="component-category-header">
+                        <h3 class="component-category-title">Form Elements</h3>
+                    </div>
+                    <p class="component-category-description">
+                        Form elements allow users to input data, make selections, and submit information. Our form components are designed for clarity and ease of use.
+                    </p>
+
+                    <div class="component-demo">
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="form-group">
+                                    <label for="name">Text Input</label>
+                                    <input type="text" id="name" placeholder="Enter your name">
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Text Input</div>
+                                <div class="component-description">Used for collecting single-line text information from users.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="form-group">
+                                    <label for="message">Textarea</label>
+                                    <textarea id="message" placeholder="Your message"></textarea>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Textarea</div>
+                                <div class="component-description">Used for collecting multi-line text information from users.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="form-group">
+                                    <label for="country">Select Dropdown</label>
+                                    <select id="country">
+                                        <option value="">Select a country</option>
+                                        <option value="us">United States</option>
+                                        <option value="uk">United Kingdom</option>
+                                        <option value="de">Germany</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Select Dropdown</div>
+                                <div class="component-description">Used for selecting a single option from a list of choices.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="subscribe">
+                                    <label for="subscribe">Subscribe to newsletter</label>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Checkbox</div>
+                                <div class="component-description">Used for selecting multiple options or toggling a single option on/off.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="form-group radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="male" name="gender" value="male">
+                                        <label for="male">Option 1</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="female" name="gender" value="female">
+                                        <label for="female">Option 2</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Radio Buttons</div>
+                                <div class="component-description">Used for selecting a single option from a set of related choices.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Form Elements Code Example</h4>
+                        <button class="copy-button">Copy Code</button>
+                        <pre><code class="language-html">&lt;div class="form-group"&gt;
+    &lt;label for="name"&gt;Full Name&lt;/label&gt;
+    &lt;input type="text" id="name" placeholder="Enter your name"&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    &lt;label for="message"&gt;Message&lt;/label&gt;
+    &lt;textarea id="message" placeholder="Your message"&gt;&lt;/textarea&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group checkbox-group"&gt;
+    &lt;input type="checkbox" id="subscribe"&gt;
+    &lt;label for="subscribe"&gt;Subscribe to newsletter&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+
+                    <div class="component-demo">
+                        <div class="component-item" style="grid-column: 1 / -1;">
+                            <div class="component-preview">
+                                <form class="form-example">
+                                    <div class="form-group">
+                                        <label for="fullname">Full Name</label>
+                                        <input type="text" id="fullname" placeholder="Enter your name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" placeholder="Enter your email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message2">Message</label>
+                                        <textarea id="message2" placeholder="Your message"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="country2">Country</label>
+                                        <select id="country2">
+                                            <option value="">Select a country</option>
+                                            <option value="us">United States</option>
+                                            <option value="uk">United Kingdom</option>
+                                            <option value="de">Germany</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group checkbox-group">
+                                        <input type="checkbox" id="subscribe2">
+                                        <label for="subscribe2">Subscribe to newsletter</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                                </form>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Complete Form Example</div>
+                                <div class="component-description">A complete form combining multiple form elements for collecting user information.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alerts -->
+                <div class="component-category">
+                    <div class="component-category-header">
+                        <h3 class="component-category-title">Alerts</h3>
+                    </div>
+                    <p class="component-category-description">
+                        Alerts provide contextual feedback messages for typical user actions. Different styles represent different types of messages.
+                    </p>
+
+                    <div class="component-demo">
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="alert alert-success">
+                                    <strong>Success!</strong> Your ticket purchase was completed successfully.
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Success Alert</div>
+                                <div class="component-description">Used to indicate successful or positive actions.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="alert alert-info">
+                                    <strong>Info:</strong> Next match is scheduled for Saturday at 3 PM.
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Info Alert</div>
+                                <div class="component-description">Used to provide neutral information or status updates.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="alert alert-error">
+                                    <strong>Error!</strong> There was a problem processing your request.
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Error Alert</div>
+                                <div class="component-description">Used to indicate errors or critical issues that need attention.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Alert Code Example</h4>
+                        <button class="copy-button">Copy Code</button>
+                        <pre><code class="language-html">&lt;div class="alert alert-success"&gt;
+    &lt;strong&gt;Success!&lt;/strong&gt; Your ticket purchase was completed successfully.
+&lt;/div&gt;
+
+&lt;div class="alert alert-info"&gt;
+    &lt;strong&gt;Info:&lt;/strong&gt; Next match is scheduled for Saturday at 3 PM.
+&lt;/div&gt;
+
+&lt;div class="alert alert-error"&gt;
+    &lt;strong&gt;Error!&lt;/strong&gt; There was a problem processing your request.
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Cards -->
+                <div class="component-category">
+                    <div class="component-category-header">
+                        <h3 class="component-category-title">Cards</h3>
+                    </div>
+                    <p class="component-category-description">
+                        Cards are flexible containers for displaying content and actions on a single topic. They can contain text, links, images, and UI controls.
+                    </p>
+
+                    <div class="component-demo">
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3>Standard Card</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>This is a standard card with some sample content. Cards can be used to display various types of information.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-secondary">Learn More</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Standard Card</div>
+                                <div class="component-description">Basic card with header, body, and footer sections for structured content.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="card card-dark">
+                                    <div class="card-header">
+                                        <h3>Dark Card</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>This card uses the dark theme colors. Perfect for highlighting important content.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Dark Card</div>
+                                <div class="component-description">Card with dark styling for contrast and visual emphasis.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="card card-accent">
+                                    <div class="card-header">
+                                        <h3>Accent Card</h3>
+                                        <span class="badge badge-new">New</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>This card uses the accent color scheme. Notice the "New" badge in the header.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Accent Card</div>
+                                <div class="component-description">Card with accent styling to draw attention to featured content.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Card Code Example</h4>
+                        <button class="copy-button">Copy Code</button>
+                        <pre><code class="language-html">&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;
+        &lt;h3&gt;Card Title&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class="card-body"&gt;
+        &lt;p&gt;Card content goes here. This can include text, images, and other elements.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card-footer"&gt;
+        &lt;button class="btn btn-secondary"&gt;Learn More&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Tables & Lists -->
+                <div class="component-category">
+                    <div class="component-category-header">
+                        <h3 class="component-category-title">Tables & Lists</h3>
+                    </div>
+                    <p class="component-category-description">
+                        Tables and lists are used to organize and display structured data in a readable format.
+                    </p>
+
+                    <div class="component-demo">
+                        <div class="component-item" style="grid-column: 1 / -1;">
+                            <div class="component-preview">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Player</th>
+                                            <th>Position</th>
+                                            <th>Goals</th>
+                                            <th>Assists</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>John Smith</td>
+                                            <td>Forward</td>
+                                            <td>12</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mike Johnson</td>
+                                            <td>Midfielder</td>
+                                            <td>4</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>David Wilson</td>
+                                            <td>Defender</td>
+                                            <td>1</td>
+                                            <td>3</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Data Table</div>
+                                <div class="component-description">Used for displaying structured data in rows and columns with headers.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-demo">
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div>
+                                    <h4>Unordered List</h4>
+                                    <ul>
+                                        <li>Match tickets</li>
+                                        <li>Club merchandise</li>
+                                        <li>Stadium tours</li>
+                                        <li>Youth academy</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Unordered List</div>
+                                <div class="component-description">Used for displaying a collection of items with no specific order.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div>
+                                    <h4>Ordered List</h4>
+                                    <ol>
+                                        <li>Season opener</li>
+                                        <li>Derby match</li>
+                                        <li>Cup semifinal</li>
+                                        <li>Season finale</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Ordered List</div>
+                                <div class="component-description">Used for displaying a collection of items in a specific sequence.</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Badges & Avatars -->
+                <div class="component-category">
+                    <div class="component-category-header">
+                        <h3 class="component-category-title">Badges & Avatars</h3>
+                    </div>
+                    <p class="component-category-description">
+                        Badges and avatars are small UI elements used to display status indicators and user representations.
+                    </p>
+
+                    <div class="component-demo">
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="badge-group">
+                                    <span class="badge">Default</span>
+                                    <span class="badge badge-new">New</span>
+                                    <span class="badge badge-hot">Hot</span>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Status Badges</div>
+                                <div class="component-description">Used to highlight status, categories, or labels.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="badge-group">
+                                    <span class="badge badge-success">Success</span>
+                                    <span class="badge badge-info">Info</span>
+                                    <span class="badge badge-error">Error</span>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Contextual Badges</div>
+                                <div class="component-description">Used to indicate different states or contexts.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="avatar">
+                                    <img src="img/placeholder-50.svg" alt="Player avatar">
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Standard Avatar</div>
+                                <div class="component-description">Default size avatar for user representation.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="avatar-group">
+                                    <div class="avatar avatar-sm">
+                                        <img src="img/placeholder-30.svg" alt="Player avatar">
+                                    </div>
+                                    <div class="avatar">
+                                        <img src="img/placeholder-50.svg" alt="Player avatar">
+                                    </div>
+                                    <div class="avatar avatar-lg">
+                                        <img src="img/placeholder-80.svg" alt="Player avatar">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Avatar Sizes</div>
+                                <div class="component-description">Different avatar sizes for various contexts.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="avatar avatar-initials">JS</div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Initials Avatar</div>
+                                <div class="component-description">Used when no image is available, displaying user initials.</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Progress Bars -->
+                <div class="component-category">
+                    <div class="component-category-header">
+                        <h3 class="component-category-title">Progress Bars</h3>
+                    </div>
+                    <p class="component-category-description">
+                        Progress bars visually represent the completion status of a task or process.
+                    </p>
+
+                    <div class="component-demo">
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Default Progress Bar</div>
+                                <div class="component-description">Standard progress indicator with primary color.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="progress">
+                                    <div class="progress-bar progress-success" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Success Progress Bar</div>
+                                <div class="component-description">Indicates successful or completed progress.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="progress">
+                                    <div class="progress-bar progress-info" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Info Progress Bar</div>
+                                <div class="component-description">Used for informational or neutral progress indication.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="progress">
+                                    <div class="progress-bar progress-error" style="width: 30%"></div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Error Progress Bar</div>
+                                <div class="component-description">Indicates problematic or critical progress status.</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Tooltips -->
+                <div class="component-category">
+                    <div class="component-category-header">
+                        <h3 class="component-category-title">Tooltips</h3>
+                    </div>
+                    <p class="component-category-description">
+                        Tooltips provide additional information when users hover over or focus on an element.
+                    </p>
+
+                    <div class="component-demo">
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="tooltip-container tooltip-top">
+                                    <button class="btn btn-secondary">Top Tooltip</button>
+                                    <div class="tooltip-content">This is a top tooltip</div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Top Tooltip</div>
+                                <div class="component-description">Displays tooltip above the element.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="tooltip-container tooltip-right">
+                                    <button class="btn btn-secondary">Right Tooltip</button>
+                                    <div class="tooltip-content">This is a right tooltip</div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Right Tooltip</div>
+                                <div class="component-description">Displays tooltip to the right of the element.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="tooltip-container tooltip-bottom">
+                                    <button class="btn btn-secondary">Bottom Tooltip</button>
+                                    <div class="tooltip-content">This is a bottom tooltip</div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Bottom Tooltip</div>
+                                <div class="component-description">Displays tooltip below the element.</div>
+                            </div>
+                        </div>
+
+                        <div class="component-item">
+                            <div class="component-preview">
+                                <div class="tooltip-container tooltip-left">
+                                    <button class="btn btn-secondary">Left Tooltip</button>
+                                    <div class="tooltip-content">This is a left tooltip</div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Left Tooltip</div>
+                                <div class="component-description">Displays tooltip to the left of the element.</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Modals -->
+                <div class="component-category">
+                    <div class="component-category-header">
+                        <h3 class="component-category-title">Modals</h3>
+                    </div>
+                    <p class="component-category-description">
+                        Modals are dialog boxes or popup windows that appear on top of the current page, requiring user interaction before returning to the main content.
+                    </p>
+
+                    <div class="component-demo">
+                        <div class="component-item" style="grid-column: 1 / -1;">
+                            <div class="component-preview">
+                                <button id="open-modal" class="btn btn-primary">Open Modal</button>
+                                <div id="example-modal" class="modal">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3>Example Modal</h3>
+                                            <button class="modal-close">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>This is an example modal dialog. It can be used to display important information or collect user input.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary modal-close">Cancel</button>
+                                            <button class="btn btn-primary">Confirm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Standard Modal</div>
+                                <div class="component-description">A modal dialog with header, body, and footer sections for structured content and actions.</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Accordion -->
+                <div class="component-category">
+                    <div class="component-category-header">
+                        <h3 class="component-category-title">Accordion</h3>
+                    </div>
+                    <p class="component-category-description">
+                        Accordions display collapsible content panels for presenting information in a limited space.
+                    </p>
+
+                    <div class="component-demo">
+                        <div class="component-item" style="grid-column: 1 / -1;">
+                            <div class="component-preview">
+                                <div class="accordion-container">
+                                    <div class="accordion-item">
+                                        <button class="accordion-header">
+                                            <span>How can I buy match tickets?</span>
+                                            <span class="accordion-icon">+</span>
+                                        </button>
+                                        <div class="accordion-content">
+                                            <p>Tickets can be purchased online through our official website, at the stadium ticket office, or through authorized resellers. Season tickets are also available with special benefits.</p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <button class="accordion-header">
+                                            <span>What are the stadium regulations?</span>
+                                            <span class="accordion-icon">+</span>
+                                        </button>
+                                        <div class="accordion-content">
+                                            <p>For safety and enjoyment of all fans, please note that large bags, outside food and drink, and prohibited items are not allowed. Full regulations are available on our website.</p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <button class="accordion-header">
+                                            <span>How can I join the youth academy?</span>
+                                            <span class="accordion-icon">+</span>
+                                        </button>
+                                        <div class="accordion-content">
+                                            <p>Our youth academy holds tryouts twice a year. Please check our website for dates and registration information. You can also be scouted through our network of partner clubs.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">FAQ Accordion</div>
+                                <div class="component-description">Used for displaying frequently asked questions or any content that benefits from progressive disclosure.</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Football Components -->
+                <div class="component-category">
+                    <div class="component-category-header">
+                        <h3 class="component-category-title">Football Club Components</h3>
+                    </div>
+                    <p class="component-category-description">
+                        Specialized components designed specifically for football club websites, including player cards, match cards, and news cards.
+                    </p>
+
+                    <div class="component-category">
+                        <h3 class="component-category-title">Player Components</h3>
+                        <p class="component-category-description">
+                            Components for displaying player information and statistics.
+                        </p>
+
+                        <div class="component-demo">
+                            <div class="component-item">
+                                <div class="component-preview">
+                                    <div class="fc-player-card">
+                                        <div class="player-number">10</div>
+                                        <img src="img/placeholder-300.svg" alt="Player" class="player-image">
+                                        <div class="player-info">
+                                            <div class="player-name">John Smith</div>
+                                            <div class="player-position">Forward</div>
+                                            <div class="player-stats">
+                                                <div class="stat">
+                                                    <div class="stat-value">12</div>
+                                                    <div class="stat-label">Goals</div>
+                                                </div>
+                                                <div class="stat">
+                                                    <div class="stat-value">5</div>
+                                                    <div class="stat-label">Assists</div>
+                                                </div>
+                                                <div class="stat">
+                                                    <div class="stat-value">24</div>
+                                                    <div class="stat-label">Games</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="component-info">
+                                    <div class="component-title">Player Card</div>
+                                    <div class="component-description">Displays key player information including photo, name, position, and statistics.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Player Card Code Example</h4>
+                            <button class="copy-button">Copy Code</button>
+                            <pre><code class="language-html">&lt;div class="fc-player-card"&gt;
+    &lt;div class="player-number"&gt;10&lt;/div&gt;
+    &lt;img src="img/player.jpg" alt="Player" class="player-image"&gt;
+    &lt;div class="player-info"&gt;
+        &lt;div class="player-name"&gt;John Smith&lt;/div&gt;
+        &lt;div class="player-position"&gt;Forward&lt;/div&gt;
+        &lt;div class="player-stats"&gt;
+            &lt;div class="stat"&gt;
+                &lt;div class="stat-value"&gt;12&lt;/div&gt;
+                &lt;div class="stat-label"&gt;Goals&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="stat"&gt;
+                &lt;div class="stat-value"&gt;5&lt;/div&gt;
+                &lt;div class="stat-label"&gt;Assists&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="stat"&gt;
+                &lt;div class="stat-value"&gt;24&lt;/div&gt;
+                &lt;div class="stat-label"&gt;Games&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="component-category">
+                        <h3 class="component-category-title">Match Components</h3>
+                        <p class="component-category-description">
+                            Components for displaying match information, results, and schedules.
+                        </p>
+
+                        <div class="component-demo">
+                            <div class="component-item">
+                                <div class="component-preview">
+                                    <div class="fc-match-card">
+                                        <div class="match-date">SAT, MAY 15 • 15:00</div>
+                                        <div class="match-teams">
+                                            <div class="team">
+                                                <img src="img/placeholder-60.svg" alt="FC Shining Stars" class="team-logo">
+                                                <div class="team-name">FC Shining Stars</div>
+                                            </div>
+                                            <div class="match-score">
+                                                <span class="score">2</span>
+                                                <span class="score-divider">:</span>
+                                                <span class="score">1</span>
+                                            </div>
+                                            <div class="team">
+                                                <img src="img/placeholder-60.svg" alt="City Rivals" class="team-logo">
+                                                <div class="team-name">City Rivals</div>
+                                            </div>
+                                        </div>
+                                        <div class="match-info">
+                                            <div class="match-venue">Starlight Stadium</div>
+                                            <div class="match-competition">Premier League</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="component-info">
+                                    <div class="component-title">Match Card</div>
+                                    <div class="component-description">Displays match information including teams, scores, date, time, venue, and competition.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>Match Card Code Example</h4>
+                            <button class="copy-button">Copy Code</button>
+                            <pre><code class="language-html">&lt;div class="fc-match-card"&gt;
+    &lt;div class="match-date"&gt;SAT, MAY 15 • 15:00&lt;/div&gt;
+    &lt;div class="match-teams"&gt;
+        &lt;div class="team"&gt;
+            &lt;img src="img/team1-logo.svg" alt="FC Shining Stars" class="team-logo"&gt;
+            &lt;div class="team-name"&gt;FC Shining Stars&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="match-score"&gt;
+            &lt;span class="score"&gt;2&lt;/span&gt;
+            &lt;span class="score-divider"&gt;:&lt;/span&gt;
+            &lt;span class="score"&gt;1&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="team"&gt;
+            &lt;img src="img/team2-logo.svg" alt="City Rivals" class="team-logo"&gt;
+            &lt;div class="team-name"&gt;City Rivals&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="match-info"&gt;
+        &lt;div class="match-venue"&gt;Starlight Stadium&lt;/div&gt;
+        &lt;div class="match-competition"&gt;Premier League&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="component-category">
+                        <h3 class="component-category-title">News Components</h3>
+                        <p class="component-category-description">
+                            Components for displaying news articles and updates.
+                        </p>
+
+                        <div class="component-demo">
+                            <div class="component-item">
+                                <div class="component-preview">
+                                    <div class="fc-news-card">
+                                        <img src="img/placeholder-350.svg" alt="News" class="news-image">
+                                        <div class="card-body">
+                                            <span class="news-category">Team News</span>
+                                            <h3 class="news-title">Smith Scores Hat-trick in Thrilling Victory</h3>
+                                            <div class="news-date">May 10, 2023</div>
+                                            <p class="news-excerpt">John Smith scored three goals as FC Shining Stars defeated City Rivals in a thrilling match at Starlight Stadium.</p>
+                                            <a href="#" class="news-link">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="component-info">
+                                    <div class="component-title">News Card</div>
+                                    <div class="component-description">Displays news article previews with image, category, title, date, excerpt, and link.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+                            <h4>News Card Code Example</h4>
+                            <button class="copy-button">Copy Code</button>
+                            <pre><code class="language-html">&lt;div class="fc-news-card"&gt;
+    &lt;img src="img/news-image.jpg" alt="News" class="news-image"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;span class="news-category"&gt;Team News&lt;/span&gt;
+        &lt;h3 class="news-title"&gt;Smith Scores Hat-trick in Thrilling Victory&lt;/h3&gt;
+        &lt;div class="news-date"&gt;May 10, 2023&lt;/div&gt;
+        &lt;p class="news-excerpt"&gt;John Smith scored three goals as FC Shining Stars defeated City Rivals in a thrilling match at Starlight Stadium.&lt;/p&gt;
+        &lt;a href="#" class="news-link"&gt;Read More&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>How to Generate Football Components</h4>
+                        <button class="copy-button">Copy Code</button>
+                        <pre><code class="language-bash"># Generate a Player Card component
+.\generate-football-component.bat PlayerCard vanilla "A card displaying player information" ./components Player
+
+# Generate a Match Card component
+.\generate-football-component.bat MatchCard vanilla "A card displaying match information" ./components Match
+
+# Generate a News Card component
+.\generate-football-component.bat NewsCard vanilla "A card displaying news article preview" ./components News
+
+# Generate all common components
+.\generate-common-football-components.bat</code></pre>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <section id="component-demo-extra" class="styleguide-container">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Interactive Components</h2>
+                </div>
+                <p class="section-description">
+                    These components demonstrate more complex interactive features for football club websites.
+                </p>
+
+                <!-- Match Schedule Component -->
+                <div class="component-category">
+                    <div class="component-category-header">
+                        <h3 class="component-category-title">Match Schedule</h3>
+                    </div>
+                    <p class="component-category-description">
+                        Interactive component for displaying upcoming matches and past results with tabbed navigation.
+                    </p>
+
+                    <div class="component-demo">
+                        <div class="component-item" style="grid-column: 1 / -1;">
+                            <div class="component-preview">
+                                <div class="match-schedule">
+                                    <div class="schedule-tabs">
+                                        <button class="schedule-tab active" data-tab="upcoming">Upcoming Matches</button>
+                                        <button class="schedule-tab" data-tab="past">Past Results</button>
+                                    </div>
+                                    <div class="schedule-content">
+                                        <div id="upcoming-matches" class="schedule-panel active">
+                                            <div class="match-card">
+                                                <div class="match-date">SAT, MAY 15 • 15:00</div>
+                                                <div class="match-teams">
+                                                    <div class="team">
+                                                        <div class="team-logo">
+                                                            <img src="img/placeholder-40.svg" alt="FC Shining Stars">
+                                                        </div>
+                                                        <div class="team-name">FC Shining Stars</div>
+                                                    </div>
+                                                    <div class="match-vs">vs</div>
+                                                    <div class="team">
+                                                        <div class="team-name">City Rivals</div>
+                                                        <div class="team-logo">
+                                                            <img src="img/placeholder-40.svg" alt="City Rivals">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="match-venue">Starlight Stadium</div>
+                                                <button class="btn btn-secondary btn-sm">Get Tickets</button>
+                                            </div>
+                                            <div class="match-card">
+                                                <div class="match-date">SAT, MAY 22 • 19:45</div>
+                                                <div class="match-teams">
+                                                    <div class="team">
+                                                        <div class="team-logo">
+                                                            <img src="img/placeholder-40.svg" alt="FC Shining Stars">
+                                                        </div>
+                                                        <div class="team-name">FC Shining Stars</div>
+                                                    </div>
+                                                    <div class="match-vs">vs</div>
+                                                    <div class="team">
+                                                        <div class="team-name">United FC</div>
+                                                        <div class="team-logo">
+                                                            <img src="img/placeholder-40.svg" alt="United FC">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="match-venue">Starlight Stadium</div>
+                                                <button class="btn btn-secondary btn-sm">Get Tickets</button>
+                                            </div>
+                                        </div>
+                                        <div id="past-results" class="schedule-panel">
+                                            <div class="match-card">
+                                                <div class="match-date">SAT, MAY 1 • 15:00</div>
+                                                <div class="match-teams">
+                                                    <div class="team">
+                                                        <div class="team-logo">
+                                                            <img src="img/placeholder-40.svg" alt="FC Shining Stars">
+                                                        </div>
+                                                        <div class="team-name">FC Shining Stars</div>
+                                                    </div>
+                                                    <div class="match-score">
+                                                        <span class="score">2</span>
+                                                        <span>-</span>
+                                                        <span class="score">1</span>
+                                                    </div>
+                                                    <div class="team">
+                                                        <div class="team-name">Blue Stars</div>
+                                                        <div class="team-logo">
+                                                            <img src="img/placeholder-40.svg" alt="Blue Stars">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="match-highlights">
+                                                    <button class="btn btn-text">Watch Highlights</button>
+                                                </div>
+                                            </div>
+                                            <div class="match-card">
+                                                <div class="match-date">SAT, APR 24 • 15:00</div>
+                                                <div class="match-teams">
+                                                    <div class="team">
+                                                        <div class="team-logo">
+                                                            <img src="img/placeholder-40.svg" alt="FC Shining Stars">
+                                                        </div>
+                                                        <div class="team-name">FC Shining Stars</div>
+                                                    </div>
+                                                    <div class="match-score">
+                                                        <span class="score">0</span>
+                                                        <span>-</span>
+                                                        <span class="score">0</span>
+                                                    </div>
+                                                    <div class="team">
+                                                        <div class="team-name">Northern FC</div>
+                                                        <div class="team-logo">
+                                                            <img src="img/placeholder-40.svg" alt="Northern FC">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="match-highlights">
+                                                    <button class="btn btn-text">Watch Highlights</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Match Schedule with Tabs</div>
+                                <div class="component-description">Interactive tabbed interface for displaying upcoming matches and past results.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Match Schedule JavaScript</h4>
+                        <button class="copy-button">Copy Code</button>
+                        <pre><code class="language-javascript">// Schedule Tabs
+const scheduleTabs = document.querySelectorAll('.schedule-tab');
+const schedulePanels = document.querySelectorAll('.schedule-panel');
+
+scheduleTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        scheduleTabs.forEach(t => t.classList.remove('active'));
+
+        // Add active class to clicked tab
+        tab.classList.add('active');
+
+        // Hide all panels
+        schedulePanels.forEach(panel => panel.classList.remove('active'));
+
+        // Show corresponding panel
+        const panelId = tab.getAttribute('data-tab');
+        document.getElementById(`${panelId}-matches`).classList.add('active');
+    });
+});</code></pre>
+                    </div>
+                </div>
+
+                <!-- Player Stats Component -->
+                <div class="component-category">
+                    <div class="component-category-header">
+                        <h3 class="component-category-title">Player Statistics</h3>
+                    </div>
+                    <p class="component-category-description">
+                        Interactive component for displaying and filtering player statistics.
+                    </p>
+
+                    <div class="component-demo">
+                        <div class="component-item" style="grid-column: 1 / -1;">
+                            <div class="component-preview">
+                                <div class="player-stats">
+                                    <div class="stats-controls">
+                                        <div class="filter-row">
+                                            <div class="stats-filter">
+                                                <label for="position-filter">Filter by Position:</label>
+                                                <select id="position-filter">
+                                                    <option value="all">All Positions</option>
+                                                    <option value="forward">Forwards</option>
+                                                    <option value="midfielder">Midfielders</option>
+                                                    <option value="defender">Defenders</option>
+                                                    <option value="goalkeeper">Goalkeepers</option>
+                                                </select>
+                                            </div>
+                                            <div class="stats-sort">
+                                                <label for="sort-by">Sort by:</label>
+                                                <select id="sort-by">
+                                                    <option value="name">Name</option>
+                                                    <option value="goals">Goals</option>
+                                                    <option value="assists">Assists</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="player-grid">
+                                        <div class="player-card" data-position="forward">
+                                            <div class="player-image">
+                                                <img src="img/placeholder-150.svg" alt="John Smith">
+                                            </div>
+                                            <div class="player-info">
+                                                <h3 class="player-name">John Smith</h3>
+                                                <div class="player-position">Forward</div>
+                                                <div class="player-number">#9</div>
+                                                <div class="player-stats">
+                                                    <div class="stat">
+                                                        <span class="stat-value">12</span>
+                                                        <span class="stat-label">Goals</span>
+                                                    </div>
+                                                    <div class="stat">
+                                                        <span class="stat-value">5</span>
+                                                        <span class="stat-label">Assists</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="player-card" data-position="midfielder">
+                                            <div class="player-image">
+                                                <img src="img/placeholder-150.svg" alt="Mike Johnson">
+                                            </div>
+                                            <div class="player-info">
+                                                <h3 class="player-name">Mike Johnson</h3>
+                                                <div class="player-position">Midfielder</div>
+                                                <div class="player-number">#8</div>
+                                                <div class="player-stats">
+                                                    <div class="stat">
+                                                        <span class="stat-value">4</span>
+                                                        <span class="stat-label">Goals</span>
+                                                    </div>
+                                                    <div class="stat">
+                                                        <span class="stat-value">10</span>
+                                                        <span class="stat-label">Assists</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="player-card" data-position="defender">
+                                            <div class="player-image">
+                                                <img src="img/placeholder-150.svg" alt="David Wilson">
+                                            </div>
+                                            <div class="player-info">
+                                                <h3 class="player-name">David Wilson</h3>
+                                                <div class="player-position">Defender</div>
+                                                <div class="player-number">#4</div>
+                                                <div class="player-stats">
+                                                    <div class="stat">
+                                                        <span class="stat-value">1</span>
+                                                        <span class="stat-label">Goals</span>
+                                                    </div>
+                                                    <div class="stat">
+                                                        <span class="stat-value">3</span>
+                                                        <span class="stat-label">Assists</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="player-card" data-position="goalkeeper">
+                                            <div class="player-image">
+                                                <img src="img/placeholder-150.svg" alt="Chris Brown">
+                                            </div>
+                                            <div class="player-info">
+                                                <h3 class="player-name">Chris Brown</h3>
+                                                <div class="player-position">Goalkeeper</div>
+                                                <div class="player-number">#1</div>
+                                                <div class="player-stats">
+                                                    <div class="stat">
+                                                        <span class="stat-value">8</span>
+                                                        <span class="stat-label">Clean Sheets</span>
+                                                    </div>
+                                                    <div class="stat">
+                                                        <span class="stat-value">72%</span>
+                                                        <span class="stat-label">Save Rate</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-info">
+                                <div class="component-title">Player Statistics Grid</div>
+                                <div class="component-description">Interactive grid for displaying player statistics with filtering and sorting options.</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer - Modern Design -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="footer-title">FC Shining Stars</h3>
+                <p>The premier football club dedicated to developing young talent and fostering a love for the beautiful game.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <div class="footer-links">
+                    <a href="#">Home</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Teams</a>
+                    <a href="#">Fixtures</a>
+                    <a href="#">News</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Resources</h3>
+                <div class="footer-links">
+                    <a href="#">Style Guide</a>
+                    <a href="#">Component Library</a>
+                    <a href="#">Documentation</a>
+                    <a href="#">Downloads</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Legal</h3>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Imprint</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                &copy; 2023 FC Shining Stars. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sentry Error Tracking - Load before application scripts -->
+    <script src="https://browser.sentry-cdn.com/7.64.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
+    <script src="js/sentry-init.js"></script>
+
+    <!-- GitHub Integration -->
+    <script>
+      window.GitHubConfig = {
+        repo: 'fc-shining-stars/fc-shining-stars',
+        branch: 'main'
+      };
+    </script>
+
+
+
+    <!-- Application Scripts -->
+    <script src="js/eagle-logo.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
